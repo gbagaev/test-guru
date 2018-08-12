@@ -9,6 +9,8 @@ Things you may want to cover:
 
 * System dependencies
 
+  https://semver.org
+
 * Configuration
 
 * Database creation
