@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180819174542) do
+ActiveRecord::Schema.define(version: 20180819180050) do
 
   create_table "answers", force: :cascade do |t|
     t.string "body", null: false
     t.integer "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "correct", default: "need evaluation"
   end
 
   create_table "categories", force: :cascade do |t|
