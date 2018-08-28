@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20180828194558) do
     t.string "title", null: false
     t.integer "level", default: 0
     t.integer "category_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,6 +51,8 @@ ActiveRecord::Schema.define(version: 20180828194558) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
+    t.string "email", null: false
+    t.string "password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

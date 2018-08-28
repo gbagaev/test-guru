@@ -5,3 +5,45 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(name: 'user', email: 'user@tg.com', password: '123')
+
+Category.create([
+                    { title: 'English' }, { title: 'Japanese' }, { title: 'Korean' }
+                ])
+
+Test.create([
+                { title: 'English writing', category_id: 1, user_id: 1 },
+                { title: 'English writing', level: 1, category_id: 1, user_id: 1 },
+                { title: 'English grammar', level: 1, category_id: 1, user_id: 1 },
+                { title: 'English grammar', level: 2, category_id: 1, user_id: 1 },
+                { title: 'Japanese writing', level: 2, category_id: 2, user_id: 1 },
+                { title: 'Japanese writing', level: 3, category_id: 2, user_id: 1 },
+                { title: 'Japanese grammar', level: 2, category_id: 2, user_id: 1 }
+            ])
+
+Question.create([
+                    { body: 'Easy English writing question 1', test_id: 1 },
+                    { body: 'Easy English writing question 2', test_id: 1 },
+                    { body: 'Easy English grammar question 1', test_id: 3 },
+                    { body: 'Hard English grammar question 1', test_id: 4 },
+                    { body: 'Hard Japanese writing question 1', test_id: 6 },
+                    { body: 'Hard Japanese writing question 2', test_id: 6 }
+                ])
+
+Answer.create([
+                  { body: 'Easy English writing answer 1', question_id: 1 },
+                  { body: 'Easy English writing answer 2', question_id: 2 },
+                  { body: 'Easy English grammar answer 1', question_id: 3, correct: true },
+                  { body: 'Hard English grammar answer 1', question_id: 4 },
+                  { body: 'Japanese writing answer 1', question_id: 5, correct: true },
+                  { body: 'Japanese writing answer 2', question_id: 6, correct: true }
+              ])
+
+UserTest.create([
+                    { user_id: 1, test_id: 1 },
+                    { user_id: 1, test_id: 2 },
+                    { user_id: 1, test_id: 3 },
+                    { user_id: 1, test_id: 4 },
+                    { user_id: 1, test_id: 5 }
+                ])
