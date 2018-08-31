@@ -6,44 +6,44 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: 'user', email: 'user@tg.com', password: '123')
+# [User, Category, Test, Question, Answer, UserTest].each(&:destroy_all)
 
-Category.create([
-                    { title: 'English' }, { title: 'Japanese' }, { title: 'Korean' }
-                ])
+user1 = User.create(name: 'user1', email: 'user1@tg.com', password: '1')
+user2 = User.create(name: 'user2', email: 'user2@tg.com', password: '2')
 
-Test.create([
-                { title: 'English writing', category_id: 1, user_id: 1 },
-                { title: 'English writing', level: 1, category_id: 1, user_id: 1 },
-                { title: 'English grammar', level: 1, category_id: 1, user_id: 1 },
-                { title: 'English grammar', level: 2, category_id: 1, user_id: 1 },
-                { title: 'Japanese writing', level: 2, category_id: 2, user_id: 1 },
-                { title: 'Japanese writing', level: 3, category_id: 2, user_id: 1 },
-                { title: 'Japanese grammar', level: 2, category_id: 2, user_id: 1 }
-            ])
+category1 = Category.create(title: 'English')
+category2 = Category.create(title: 'Japanese')
+category3 = Category.create(title: 'Korean')
 
-Question.create([
-                    { body: 'Easy English writing question 1', test_id: 1 },
-                    { body: 'Easy English writing question 2', test_id: 1 },
-                    { body: 'Easy English grammar question 1', test_id: 3 },
-                    { body: 'Hard English grammar question 1', test_id: 4 },
-                    { body: 'Hard Japanese writing question 1', test_id: 6 },
-                    { body: 'Hard Japanese writing question 2', test_id: 6 }
-                ])
+test1 = Test.create(title: 'English writing', category_id: category1.id)
+test2 = Test.create(title: 'English writing', level: 1, category_id: category1.id)
+test3 = Test.create(title: 'English grammar', level: 1, category_id: category1.id)
+test4 = Test.create(title: 'English grammar', level: 2, category_id: category1.id)
+test5 = Test.create(title: 'Japanese writing', level: 2, category_id: category2.id)
+test6 = Test.create(title: 'Japanese writing', level: 3, category_id: category2.id)
+test7 = Test.create(title: 'Japanese grammar', level: 2, category_id: category2.id)
+
+question1 = Question.create(body: 'Easy English writing question 1', test_id: test1.id)
+question2 = Question.create(body: 'Easy English writing question 2', test_id: test1.id)
+question3 = Question.create(body: 'Easy English grammar question 1', test_id: test3.id)
+question4 = Question.create(body: 'Hard English grammar question 1', test_id: test4.id)
+question5 = Question.create(body: 'Hard Japanese writing question 1', test_id: test6.id)
+question6 = Question.create(body: 'Hard Japanese writing question 2', test_id: test6.id)
 
 Answer.create([
-                  { body: 'Easy English writing answer 1', question_id: 1 },
-                  { body: 'Easy English writing answer 2', question_id: 2 },
-                  { body: 'Easy English grammar answer 1', question_id: 3, correct: true },
-                  { body: 'Hard English grammar answer 1', question_id: 4 },
-                  { body: 'Japanese writing answer 1', question_id: 5, correct: true },
-                  { body: 'Japanese writing answer 2', question_id: 6, correct: true }
+                  { body: 'Easy English writing answer 1', question_id: question1.id },
+                  { body: 'Easy English writing answer 2', question_id: question2.id },
+                  { body: 'Easy English grammar answer 1', question_id: question3.id, correct: true },
+                  { body: 'Hard English grammar answer 1', question_id: question4.id },
+                  { body: 'Japanese writing answer 1', question_id: question5.id, correct: true },
+                  { body: 'Japanese writing answer 2', question_id: question6.id, correct: true }
               ])
 
 UserTest.create([
-                    { user_id: 1, test_id: 1 },
-                    { user_id: 1, test_id: 2 },
-                    { user_id: 1, test_id: 3 },
-                    { user_id: 1, test_id: 4 },
-                    { user_id: 1, test_id: 5 }
+                    { user_id: user1.id, test_id: test1.id },
+                    { user_id: user1.id, test_id: test2.id },
+                    { user_id: user1.id, test_id: test3.id },
+                    { user_id: user2.id, test_id: test4.id },
+                    { user_id: user2.id, test_id: test5.id }
                 ])
+
