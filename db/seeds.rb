@@ -8,8 +8,10 @@
 
 # [User, Category, Test, Question, Answer, UserTest].each(&:destroy_all)
 
-user1 = User.create(name: 'user1', email: 'user1@tg.com', password: '1')
-user2 = User.create(name: 'user2', email: 'user2@tg.com', password: '2')
+users = User.create([
+                        { name: 'user1', email: 'user1@tg.com', password: '1' },
+                        { name: 'user2', email: 'user2@tg.com', password: '2' }
+                    ])
 
 category1 = Category.create(title: 'English')
 category2 = Category.create(title: 'Japanese')
@@ -40,10 +42,9 @@ Answer.create([
               ])
 
 UserTest.create([
-                    { user_id: user1.id, test_id: test1.id },
-                    { user_id: user1.id, test_id: test2.id },
-                    { user_id: user1.id, test_id: test3.id },
-                    { user_id: user2.id, test_id: test4.id },
-                    { user_id: user2.id, test_id: test5.id }
+                    { user_id: users[0].id, test_id: test1.id },
+                    { user_id: users[0].id, test_id: test2.id },
+                    { user_id: users[0].id, test_id: test3.id },
+                    { user_id: users[1].id, test_id: test4.id },
+                    { user_id: users[1].id, test_id: test5.id }
                 ])
-
