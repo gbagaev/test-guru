@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# [User, Category, Test, Question, Answer, UserTest].each(&:destroy_all)
+# [User, Category, Test, Question, Answer].each(&:destroy_all)
 
 users = User.create([
                         { name: 'user1', email: 'user1@tg.com', password: '1' },
@@ -41,10 +41,8 @@ Answer.create([
                   { body: 'Japanese writing answer 2', question_id: question6.id, correct: true }
               ])
 
-UserTest.create([
-                    { user_id: users[0].id, test_id: test1.id },
-                    { user_id: users[0].id, test_id: test2.id },
-                    { user_id: users[0].id, test_id: test3.id },
-                    { user_id: users[1].id, test_id: test4.id },
-                    { user_id: users[1].id, test_id: test5.id }
-                ])
+test1.users.push(users[0])
+test2.users.push(users[0])
+test3.users.push(users[0])
+test4.users.push(users[1])
+test5.users.push(users[1])
