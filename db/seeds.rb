@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# [User, Category, Test, Question, Answer].each(&:destroy_all)
+[User, Category, Test, Question, Answer].each(&:destroy_all)
 
 users = User.create([
                         { name: 'user1', email: 'user1@tg.com', password: '1' },
@@ -17,13 +17,13 @@ category1 = Category.create(title: 'English')
 category2 = Category.create(title: 'Japanese')
 category3 = Category.create(title: 'Korean')
 
-test1 = Test.create(title: 'English writing', category_id: category1.id)
-test2 = Test.create(title: 'English writing', level: 1, category_id: category1.id)
-test3 = Test.create(title: 'English grammar', level: 1, category_id: category1.id)
-test4 = Test.create(title: 'English grammar', level: 2, category_id: category1.id)
-test5 = Test.create(title: 'Japanese writing', level: 2, category_id: category2.id)
-test6 = Test.create(title: 'Japanese writing', level: 3, category_id: category2.id)
-test7 = Test.create(title: 'Japanese grammar', level: 2, category_id: category2.id)
+test1 = Test.create(title: 'English writing', category_id: category1.id, author_id: users[0].id)
+test2 = Test.create(title: 'English writing', level: 1, category_id: category1.id, author_id: users[0].id)
+test3 = Test.create(title: 'English grammar', level: 1, category_id: category1.id, author_id: users[0].id)
+test4 = Test.create(title: 'English grammar', level: 2, category_id: category1.id, author_id: users[1].id)
+test5 = Test.create(title: 'Japanese writing', level: 2, category_id: category2.id, author_id: users[1].id)
+test6 = Test.create(title: 'Japanese writing', level: 3, category_id: category2.id, author_id: users[1].id)
+test7 = Test.create(title: 'Japanese grammar', level: 2, category_id: category2.id, author_id: users[1].id)
 
 question1 = Question.create(body: 'Easy English writing question 1', test_id: test1.id)
 question2 = Question.create(body: 'Easy English writing question 2', test_id: test1.id)
