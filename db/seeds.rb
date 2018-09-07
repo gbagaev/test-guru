@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-[User, Category, Test, Question, Answer].each(&:destroy_all)
+# [User, Category, Test, Question, Answer].each(&:destroy_all)
 
 users = User.create([
                         { name: 'user1', email: 'user1@tg.com', password: '1' },
