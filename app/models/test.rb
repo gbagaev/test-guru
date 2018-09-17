@@ -5,7 +5,11 @@ class Test < ApplicationRecord
   has_many :tests_users
   has_many :users, through: :tests_users
 
-  scope :by_level, ->(level) { where(level: level) }
+  default_scope { order(id: :desc) }
+
+  scope :by_level, -> (level) { where(level: level) }
+  scope :by_user_and_level, -> (user_id, test_level) { joins(:tests_users).where(tests_users: { user_id: user_id }, tests: {level: test_level }) }
+  scope :test_titles_by_category, -> (category_title) { joins(:category).where(categories: { title: category_title }).pluck(:title) }
 
   scope :easy, -> { by_level(0..1) }
   scope :medium, -> { by_level(2..4) }
@@ -14,5 +18,6 @@ class Test < ApplicationRecord
   validates :title, presence: true,
                     uniqueness: { scope: :level }
   validates :level, numericality: { only_integer: true,
-                                    greater_than: -1 }
+                                    greater_than: -1,
+                                    allow_nil: true }
 end
