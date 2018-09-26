@@ -18,6 +18,7 @@ module TestGuru
     config.time_zone = 'Pacific Time (US & Canada)'
 
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :ru
+    I18n.available_locales = [:en, :ru]
+    config.i18n.default_locale = :en
   end
 end

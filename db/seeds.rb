@@ -33,10 +33,10 @@ question5 = Question.create(body: 'Hard Japanese writing question 1', test_id: t
 question6 = Question.create(body: 'Hard Japanese writing question 2', test_id: test6.id)
 
 Answer.create([
-                  { body: 'Easy English writing answer 1', question_id: question1.id },
-                  { body: 'Easy English writing answer 2', question_id: question2.id },
+                  { body: 'Easy English writing answer 1', question_id: question1.id, correct: false },
+                  { body: 'Easy English writing answer 2', question_id: question2.id, correct: false },
                   { body: 'Easy English grammar answer 1', question_id: question3.id, correct: true },
-                  { body: 'Hard English grammar answer 1', question_id: question4.id },
+                  { body: 'Hard English grammar answer 1', question_id: question4.id, correct: false },
                   { body: 'Japanese writing answer 1', question_id: question5.id, correct: true },
                   { body: 'Japanese writing answer 2', question_id: question6.id, correct: true }
               ])
